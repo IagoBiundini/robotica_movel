@@ -82,7 +82,7 @@ Para garantir que o modelo do robô funcione corretamente, o projeto carrega aut
 Para iniciar o Gazebo com o ambiente **mundo_corredor**, execute:
 
 ```bash
-roslaunch professor_mundo start_gazebo.launch
+roslaunch professor_mundo corredor.launch
 ```
 
 Isso abrirá o Gazebo com o ambiente de teste.
