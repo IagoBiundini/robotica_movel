@@ -14,11 +14,8 @@
         <arg name="world_name" value="$(arg world_name)"/>
         <arg name="paused" value="false"/>
         <arg name="use_sim_time" value="true"/>
-        <arg name="gui" value="true"/>
+        <arg name="gui" value="false"/> <!-- Evita abrir o gzclient automaticamente -->
     </include>
-
-    <!-- Aguarda o Gazebo estar pronto antes de spawnar o robô -->
-    <node name="wait_for_gazebo" pkg="gazebo_ros" type="gzclient" output="screen" />
 
     <!-- Carrega a descrição do robô no ROS Parameter Server antes de spawná-lo -->
     <param name="/robot_description" command="$(find xacro)/xacro --inorder $(find p3dx_description)/urdf/pioneer3dx.xacro"/>
@@ -32,5 +29,6 @@
         <arg name="z" value="$(arg z)" />
     </include>
 
+    <!-- Inicia o gzclient manualmente após o Gazebo estar rodando -->
+    <node name="gazebo_client" pkg="gazebo_ros" type="gzclient" output="screen"/>
 </launch>
-
